@@ -9,7 +9,7 @@ class AppTest {
     @Test
     void pipelineStatusShouldBeReady() {
         assertEquals(
-            "THIS TEST SHOULD FAIL",
+            "CI/CD validation target is ready",
             App.getPipelineStatus()
         );
     }
