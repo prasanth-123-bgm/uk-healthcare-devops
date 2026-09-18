@@ -38,24 +38,24 @@ jobs:
         with:
           name: cicd-validation-jar
           path: app/target/*.jar
-    deploy:
-    name: Deploy application
-    needs: build-and-test
-    runs-on: ubuntu-latest
+  deploy:
+  name: Deploy application
+  needs: build-and-test
+  runs-on: ubuntu-latest
 
-    steps:
+  steps:
 
-      - name: Checkout source code
-        uses: actions/checkout@v5
+    - name: Checkout source code
+      uses: actions/checkout@v5
 
-      - name: Download JAR artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: cicd-validation-jar
-          path: app-artifact
+    - name: Download JAR artifact
+      uses: actions/download-artifact@v8
+      with:
+        name: cicd-validation-jar
+        path: app-artifact
 
-      - name: Make deployment script executable
-        run: chmod +x scripts/deploy.sh
+    - name: Make deployment script executable
+      run: chmod +x scripts/deploy.sh
 
-      - name: Deploy application
-        run: ./scripts/deploy.sh
+    - name: Deploy application
+      run: ./scripts/deploy.sh
