@@ -1,27 +1,41 @@
 # UK Healthcare Patient Management Platform
-## T-001 – CI/CD Pipeline Setup
+
+## T-001 - CI/CD Pipeline Setup
 
 ### Objective
 
-Set up and validate a CI/CD pipeline for automated build,
-testing, packaging, deployment, and deployment verification.
+Set up and validate a CI/CD pipeline using GitHub Actions
+for automated build, testing, packaging, deployment, and
+deployment verification.
 
-### CI/CD Tool
+## Technology
 
+- GitHub Actions
+- Git
+- Java 17
+- Maven
+- JUnit
+- Bash
+
+## Pipeline
+
+```text
+Git Push
+    ↓
 GitHub Actions
-
-### Pipeline Flow
-
-Checkout → Build → Test → Package → Deploy → Verify
-
-### Repository Structure
-
-- `.github/workflows/` – CI/CD workflow configuration
-- `app/` – CI/CD pipeline validation target
-- `scripts/` – automation and deployment scripts
-- `docs/` – project documentation
-- `docs/evidence/` – execution evidence and screenshots
-
-### Status
-
-Implementation in progress.
+    ↓
+Checkout
+    ↓
+Java Setup
+    ↓
+Build & Test
+    ↓
+Package
+    ↓
+Upload Artifact
+    ↓
+Download Artifact
+    ↓
+Deploy
+    ↓
+Verify Deployment
