@@ -1,0 +1,40 @@
+name: T-001 CI/CD Pipeline
+
+on:                   #Trigger that runs in the github to perform the actions defined in the jobs section
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+
+    runs-on: ubuntu-latest     #used to execute the pipeline
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build and test
+        working-directory: ./app
+        run: mvn clean test
+
+      - name: Package application
+        working-directory: ./app
+        run: mvn package
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cicd-validation-jar
+          path: app/target/*.jar
