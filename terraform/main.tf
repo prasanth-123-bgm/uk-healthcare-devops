@@ -14,13 +14,9 @@ resource "docker_image" "healthcare_app" {
 }
 
 resource "docker_container" "healthcare_app" {
-  name  = "uk-healthcare-cicd-terraform"
-  image = docker_image.healthcare_app.image_id
-
-  ports {
-    internal = 8080
-    external = 8080
-  }
+  name     = "uk-healthcare-cicd-terraform"
+  image    = docker_image.healthcare_app.image_id
+  must_run = false
 }
 
 
