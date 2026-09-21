@@ -1,0 +1,4 @@
+services:
+  healthcare-validation:
+    image: uk-healthcare-cicd:1.0
+    container_name: uk-healthcare-cicd-compose
